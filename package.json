@@ -4,9 +4,7 @@
   "description": "generate javascript es6 classes from schemas",
   "type": "module",
   "main": "index.js",
-  "scripts": {
-    "test": "npx jasmine"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marchuanv/schema.jsmodel.git"
@@ -27,7 +25,6 @@
     "@hyperjump/json-schema": "^1.9.3",
     "@hyperjump/json-schema-core": "^0.28.5",
     "camelcase": "^8.0.0",
-    "jasmine": "^5.1.0",
     "js-sha1": "^0.7.0"
   }
 }
