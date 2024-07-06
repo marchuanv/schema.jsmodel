@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "generate javascript es6 classes from schemas",
   "type": "module",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {},
   "repository": {
     "type": "git",
