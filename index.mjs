@@ -1,3 +1,4 @@
+import { pathToFileURL } from "node:url";
 import { ModelClasses } from "./lib/model-classes.mjs";
 import { SchemaLoader } from "./lib/schema-loader.mjs";
 import { SchemaModel } from "./lib/schema-model.mjs";
@@ -12,6 +13,5 @@ export async function getModels(schemaFilePath) {
     const schemaLoader = new SchemaLoader(schemaFilePath);
     await schemaLoader.load();
     const exportFilePath = ModelClasses.create(schemaLoader);
-    const { default: exports } = await import(exportFilePath);
-    return exports;
+    return await import(pathToFileURL(exportFilePath));
 }
