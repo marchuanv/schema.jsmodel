@@ -2,7 +2,6 @@ import { pathToFileURL } from "node:url";
 import { ModelClasses } from "./lib/model-classes.mjs";
 import { SchemaLoader } from "./lib/schema-loader.mjs";
 import { SchemaModel } from "./lib/schema-model.mjs";
-import { existsSync } from 'node:fs';
 /**
  * @param { SchemaLoader } schemaLoader
  * @returns { Array<SchemaModel> }
