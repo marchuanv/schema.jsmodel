@@ -15,3 +15,4 @@ export async function getModels(schemaFilePath) {
     const exportFilePath = ModelClasses.create(schemaLoader);
     return await import(pathToFileURL(exportFilePath));
 }
+export { SchemaLoader, SchemaModel };
