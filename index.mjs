@@ -12,6 +12,12 @@ export async function getModels(schemaLoader) {
     }
     await schemaLoader.load();
     const exportFilePath = ModelClasses.create(schemaLoader);
-    return await import(pathToFileURL(exportFilePath));
+    const exportedModels = await import(pathToFileURL(exportFilePath));
+    const modelKeys = Object.keys(models);
+    let models = [];
+    for (const modelKey of modelKeys) {
+        models.push(exportedModels[modelKey]);
+    }
+    return models;
 }
 export { SchemaLoader, SchemaModel };
