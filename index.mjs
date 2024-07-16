@@ -17,7 +17,7 @@ export async function getModels(schemaLoader) {
     let models = [];
     for (const modelKey of Object.keys(exportedModels)) {
         const ModelClass = exportedModels[modelKey];
-        models.push({ type: ModelClass, instanceId: crypto.randomUUID(), instance: new ModelClass(schemaLoader) });
+        models.push({ type: ModelClass, instance: new ModelClass(schemaLoader) });
     }
     return models;
 }
