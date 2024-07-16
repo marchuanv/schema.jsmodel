@@ -1,10 +1,11 @@
-import { pathToFileURL } from "node:url";
-import { ModelClasses } from "./lib/model-classes.mjs";
-import { SchemaLoader } from "./lib/schema-loader.mjs";
-import { SchemaModel } from "./lib/schema-model.mjs";
+import { pathToFileURL } from 'node:url';
+import crypto from 'node:crypto';
+import { ModelClasses } from './lib/model-classes.mjs';
+import { SchemaLoader } from './lib/schema-loader.mjs';
+import { SchemaModel } from './lib/schema-model.mjs';
 /**
  * @param { SchemaLoader } schemaLoader
- * @returns { Array<SchemaModel> }
+ * @returns { Array<{ type: class, instance: SchemaModel }> }
 */
 export async function getModels(schemaLoader) {
     if (schemaLoader === null || schemaLoader === undefined || !(schemaLoader instanceof SchemaLoader)) {
@@ -16,7 +17,7 @@ export async function getModels(schemaLoader) {
     let models = [];
     for (const modelKey of Object.keys(exportedModels)) {
         const ModelClass = exportedModels[modelKey];
-        models.push(new ModelClass(schemaLoader));
+        models.push({ type: ModelClass, instanceId: crypto.randomUUID(), instance: new ModelClass(schemaLoader) });
     }
     return models;
 }
