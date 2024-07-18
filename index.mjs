@@ -1,4 +1,4 @@
-import schemaInfo from '../../schema.info.json';
+import schemaInfo from '../../schema.info.json' assert { type: 'json' };
 import { ModelClasses } from './lib/model-classes.mjs';
 import { SchemaLoader } from './lib/schema-loader.mjs';
 import { SchemaModel } from './lib/schema-model.mjs';
