@@ -1,13 +1,15 @@
-import { pathToFileURL } from 'node:url';
+import schemaInfo from '../../schema.info.json';
 import { ModelClasses } from './lib/model-classes.mjs';
 import { SchemaLoader } from './lib/schema-loader.mjs';
 import { SchemaModel } from './lib/schema-model.mjs';
-const jsonSchemaFilePath = process.argv[2];
 (async () => {
-    const schemaLoader = new SchemaLoader(jsonSchemaFilePath);
-    await schemaLoader.load();
-    const exportFilePath = ModelClasses.create(schemaLoader);
-    return await import(pathToFileURL(exportFilePath));
+    const schemaInfoKeys = Object(schemaInfo);
+    for (const key of schemaInfoKeys) {
+        const { jsonSchemaFilePath } = schemaInfo[key];
+        const schemaLoader = new SchemaLoader(jsonSchemaFilePath);
+        await schemaLoader.load();
+        ModelClasses.create(schemaLoader);
+    }
 })().catch(err => console.log(err));
 export { SchemaModel };
 
